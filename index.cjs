@@ -4,7 +4,9 @@ module.exports = Application({
   plugins: [],
   secureDomains: [
     'tawnyflor.neocities.org',
-    '/^https?:\\/\\/tawnyflor\\.neocities\\.org(?::\\d+)?(?:\\/.*)?$/',
+    // Waline may receive legitimate browser requests without Referer or Origin.
+    // Allow only the empty-header case in addition to the blog hostname.
+    '/^$/',
     'waline-comment-floralchai.vercel.app',
     'waline-comment-navy.vercel.app',
   ],
