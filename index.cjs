@@ -2,14 +2,9 @@ const Application = require('@waline/vercel');
 
 module.exports = Application({
   plugins: [],
-  secureDomains: [
-    'tawnyflor.neocities.org',
-    '/^https?:\\/\\/tawnyflor\\.neocities\\.org(?::\\d+)?(?:\\/.*)?$/',
-    '/^waline-comment-[a-z0-9]+-floralchai\\.vercel\\.app$/',
-    'waline-comment-floralchai.vercel.app',
-    'waline-comment-navy.vercel.app',
-    '/^$/',
-  ],
+  // This is a public comment API. Do not restrict readers by Referer:
+  // browsers, privacy tools, and embedded clients may omit or change it.
+  // CORS is handled separately by vercel.json for the public API routes.
   async postSave(comment) {
     // do what ever you want after comment saved
   },
